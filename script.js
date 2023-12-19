@@ -1,17 +1,23 @@
-//your JS code here. If required.
-function enterMetaverse() {
-    // Get the p element with the id "status"
-    var statusParagraph = document.getElementById("status");
+// script.js
 
-    // Change the text content of the p element
-    statusParagraph.textContent = "Entered Metaverse";
+document.addEventListener("DOMContentLoaded", function() {
+    // Your code here will run after the DOM is fully loaded.
 
-    // Create a new h1 element
-    var h1Element = document.createElement("h1");
+    function enterMetaverse() {
+        var statusParagraph = document.getElementById("status");
 
-    // Set the text content of the h1 element
-    h1Element.textContent = statusParagraph.textContent;
+        if (statusParagraph) {
+            statusParagraph.textContent = "Entered Metaverse";
 
-    // Replace the existing p element with the new h1 element
-    statusParagraph.parentNode.replaceChild(h1Element, statusParagraph);
-}
+            var h1Element = document.createElement("h1");
+            h1Element.textContent = statusParagraph.textContent;
+
+            statusParagraph.parentNode.replaceChild(h1Element, statusParagraph);
+        } else {
+            console.error("Element with id 'status' not found.");
+        }
+    }
+
+    // Expose the enterMetaverse function globally for testing or future modifications
+    window.enterMetaverse = enterMetaverse;
+});
